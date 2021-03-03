@@ -1,0 +1,122 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'index.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body style="margin: 0px;">
+<div id="sidebar">
+    <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
+    <a href="javascript:void(0);" class="icon" onclick="openNav()">
+        <i class="fa fa-bars"></i>
+    </a>
+    <div>
+        <h2>Morfo Designs</h2>
+        <p>Johannes Installateur</p>
+        <hr>
+    </div>
+    <ul>
+        <li>Keuzeschema</li>
+        <li>Concepten</li>
+    </ul>
+    <a href="login.html" id="loginb" style="display: block;">Log uit</a>
+</div>
+<main>
+    <div id="title">
+        <h1>Morfologisch Keuzeschema</h1>
+        <hr>
+    </div>
+    <div class="content-wrapper">
+        <table id="keuzeschema">
+            <tr id="first">
+                <td class="left-side">
+                    <p>Bronnen</p>
+                </td>
+
+                <td class="right-side">
+                    <div id="arrow-left"><p>&#8249;</p></div>
+                    {% for category in categories %}
+                        {% if category.category == category.CategoryChoices.BRONNEN %}
+                            <div id="{{ category.sub_category }}" class="boxieofzo">{{ category.sub_category }}</div>
+                        {% endif %}
+                    {% endfor %}
+                    <div id="arrow-right"><p>&#8250;</p></div>
+                </td>
+
+            </tr>
+            <tr>
+                <td class="left-side">
+                    <p>Lage temperatuur opwekking</p>
+                </td>
+                <td class="right-side">
+                    <div id="arrow-left"><p>&#8249;</p></div>
+                    {% for category in categories %}
+                        {% if category.category == category.CategoryChoices.LAGEOPWEKKING %}
+                            <div id="{{ category.sub_category }}" class="boxieofzo">{{ category.sub_category }}</div>
+                        {% endif %}
+                    {% endfor %}
+                    <div id="arrow-right"><p>&#8250;</p></div>
+                </td>
+            </tr>
+            <tr>
+                <td class="left-side">
+                    <p>Hoge temperatuur opwekking</p>
+                </td>
+                <td class="right-side">
+                    <div id="arrow-left"><p>&#8249;</p></div>
+                    {% for category in categories %}
+                        {% if category.category == category.CategoryChoices.HOGEOPWEKKING %}
+                            <div id="{{ category.sub_category }}" class="boxieofzo">{{ category.sub_category }}</div>
+                        {% endif %}
+                    {% endfor %}
+                    <div id="arrow-right"><p>&#8250;</p></div>
+                </td>
+            </tr>
+            <tr>
+                <td class="left-side">
+                    <p>Lage temperatuur afgifte</p>
+                </td>
+                <td class="right-side">
+                    <div id="arrow-left"><p>&#8249;</p></div>
+                    {% for category in categories %}
+                        {% if category.category == category.CategoryChoices.LAGEAFGIFTE %}
+                            <div id="{{ category.sub_category }}" class="boxieofzo">{{ category.sub_category }}</div>
+                        {% endif %}
+                    {% endfor %}
+                    <div id="arrow-right"><p>&#8250;</p></div>
+                </td>
+            </tr>
+            <tr id="last">
+                <td class="left-side">
+                    <p>Hoge temperatuur afgifte</p>
+                </td>
+                <td class="right-side">
+                    <div id="arrow-left"><p>&#8249;</p></div>
+                    {% for category in categories %}
+                        {% if category.category == category.CategoryChoices.HOGEAFGIFTE %}
+                            <div id="{{ category.sub_category }}" class="boxieofzo">{{ category.sub_category }}</div>
+                        {% endif %}
+                    {% endfor %}
+                    <div id="arrow-right"><p>&#8250;</p></div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="modal">
+        <div id="modal-content">
+            <div id="title-keuze">
+                <h1>Bodemwarmte</h1>
+                <hr>
+            </div>
+            <span class="close">&times;</span>
+        </div>
+    </div>
+</main>
+<script src="{% static 'keuzeschema.js' %}"></script>
+</body>
+</html>
