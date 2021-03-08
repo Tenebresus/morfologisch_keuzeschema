@@ -14,8 +14,11 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.urls import path
-from .views import KeuzeSchemaView
+from .views import KeuzeSchemaView, ProductView
+
+app_name = 'keuzeschema'
 
 urlpatterns = [
     path('', KeuzeSchemaView.as_view()),
+    path('sub_category/<str:sub_category>/', ProductView.as_view(), name='product_json'),
 ]

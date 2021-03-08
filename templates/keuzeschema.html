@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="{% static 'index.min.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'keuzeschema.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
 </head>
 <body style="margin: 0px;">
 <div id="sidebar">
@@ -42,7 +43,8 @@
                     <div id="arrow-left"><p>&#8249;</p></div>
                     {% for category in categories %}
                         {% if category.category == category.CategoryChoices.BRONNEN %}
-                            <div id="{{ category.sub_category }}" class="boxieofzo">{{ category.sub_category }}</div>
+                            <div url="{% url 'keuzeschema:product_json' category.sub_category %}"
+                                 id="{{ category.sub_category }}" class="boxieofzo">{{ category.sub_category }}</div>
                         {% endif %}
                     {% endfor %}
                     <div id="arrow-right"><p>&#8250;</p></div>
@@ -57,7 +59,8 @@
                     <div id="arrow-left"><p>&#8249;</p></div>
                     {% for category in categories %}
                         {% if category.category == category.CategoryChoices.LAGEOPWEKKING %}
-                            <div id="{{ category.sub_category }}" class="boxieofzo">{{ category.sub_category }}</div>
+                            <div url="{% url 'keuzeschema:product_json' category.sub_category %}"
+                                 id="{{ category.sub_category }}" class="boxieofzo">{{ category.sub_category }}</div>
                         {% endif %}
                     {% endfor %}
                     <div id="arrow-right"><p>&#8250;</p></div>
@@ -71,7 +74,8 @@
                     <div id="arrow-left"><p>&#8249;</p></div>
                     {% for category in categories %}
                         {% if category.category == category.CategoryChoices.HOGEOPWEKKING %}
-                            <div id="{{ category.sub_category }}" class="boxieofzo">{{ category.sub_category }}</div>
+                            <div url="{% url 'keuzeschema:product_json' category.sub_category %}"
+                                 id="{{ category.sub_category }}" class="boxieofzo">{{ category.sub_category }}</div>
                         {% endif %}
                     {% endfor %}
                     <div id="arrow-right"><p>&#8250;</p></div>
@@ -85,7 +89,8 @@
                     <div id="arrow-left"><p>&#8249;</p></div>
                     {% for category in categories %}
                         {% if category.category == category.CategoryChoices.LAGEAFGIFTE %}
-                            <div id="{{ category.sub_category }}" class="boxieofzo">{{ category.sub_category }}</div>
+                            <div url="{% url 'keuzeschema:product_json' category.sub_category %}"
+                                 id="{{ category.sub_category }}" class="boxieofzo">{{ category.sub_category }}</div>
                         {% endif %}
                     {% endfor %}
                     <div id="arrow-right"><p>&#8250;</p></div>
@@ -99,7 +104,8 @@
                     <div id="arrow-left"><p>&#8249;</p></div>
                     {% for category in categories %}
                         {% if category.category == category.CategoryChoices.HOGEAFGIFTE %}
-                            <div id="{{ category.sub_category }}" class="boxieofzo">{{ category.sub_category }}</div>
+                            <div url="{% url 'keuzeschema:product_json' category.sub_category %}"
+                                 id="{{ category.sub_category }}" class="boxieofzo">{{ category.sub_category }}</div>
                         {% endif %}
                     {% endfor %}
                     <div id="arrow-right"><p>&#8250;</p></div>
@@ -110,10 +116,13 @@
     <div id="modal">
         <div id="modal-content">
             <div id="title-keuze">
-                <h1>Bodemwarmte</h1>
-                <hr>
+                <h1 id="modal_title"></h1>
+                <hr/>
+                <div id="modal_items">
+
+                </div>
             </div>
-            <span class="close">&times;</span>
+            <span id="close">&times;</span>
         </div>
     </div>
 </main>
